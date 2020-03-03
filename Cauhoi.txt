@@ -1,0 +1,121 @@
+20 
+cau 1
+A
+B
+C
+D
+A
+cau 2
+A
+B
+C
+D
+C
+cau 3
+A
+B
+C
+D
+C
+cau 4
+A
+B
+C
+D
+D
+cau 5
+A
+B
+C
+D
+A
+cau 6
+A
+B
+C
+D
+B
+cau 7
+A
+B
+C
+D
+C
+cau 8
+A
+B
+C
+D
+D
+cau 9
+A
+B
+C
+D
+A
+cau 10
+A
+B
+C
+D
+B
+cau 11
+A
+B
+C
+D
+C
+cau 12
+A
+B
+C
+D
+D
+cau 13
+A
+B
+C
+D
+A
+cau 14
+A
+B
+C
+D
+B
+cau 15
+A
+B
+C
+D
+C
+cau 16 
+A 
+B 
+C 
+D 
+B 
+cau 17 
+A 
+B 
+C 
+D 
+A 
+cau 18 
+A 
+B 
+C 
+D 
+C 
+cau 19 
+A 
+B 
+C 
+D 
+D 
+cau 20 
+A 
+B 
+C 
+D 
+B 
