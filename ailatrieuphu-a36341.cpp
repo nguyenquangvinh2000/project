@@ -1,80 +1,64 @@
+#include <iostream>
 #include <fstream>
-#include <stdlib.h>
+#include <cstring>
+
 using namespace std;
-#define MAX 100
-#include <unistd.h>
-#include <string.h>
-#include<iostream>
-char cauhoi[MAX][50];
-char dapanA[MAX][10];
-char dapanB[MAX][10];
-char dapanC[MAX][10];
-char dapanD[MAX][10];
-char dapandung[MAX][5];
-int N;
-int main()
+struct Questions
 {
-	N=0; // so cau hoi
-	fstream fin("Cauhoi.txt");
-	fin>>N;
-	char temp[100];
-	fin.getline(temp ,100);
-	for(int i=0;i<N;i++)
-	{
-		fin.getline(cauhoi[i],50);
-		fin.getline(dapanA[i],10);
-		fin.getline(dapanB[i],10);
-		fin.getline(dapanC[i],10);
-		fin.getline(dapanD[i],10);
-		fin.getline(dapandung[i],5);
-	}
-	fin.close();
-    char ten[20];
-    cout<<"Chào mừng quý vị đến với game show Ai là triệu phú "<<endl;
-    sleep(2);
-    cout<<"\t\tDo A36341 san xuat"<<endl;
-    cout<<"\tBạn tên là: ";
-    cin.getline(ten,20);
-    cout<<"\tBạn sẵn sàng chưa ?"<<endl;
-    cout<<"1.Tôi đã sẵn sàng"<<endl;
-    cout<<"2.Tôi chưa sẵn sàng"<<endl;
-    int chon;
-    cin>>chon;
-    sleep(2);
-    cout<<"\tVà bây giờ chúng ta đi tìm : Ai là triệu phú"<<endl;
-    int diem;
-    diem=0;
-    if(chon==1)
+   char  Hoi[255];
+   char  A[50];
+   char  B[50];
+   char  C[50];
+   char  D[50];
+   char  Dapan[3];
+   int Thuong;
+};
+int main() 
+{
+  fstream f; 
+  struct Questions Cauhoi[15];
+  char temp[10];
+  int n;
+  char Traloi[3];
+
+  f.open("cauhoi.txt",ios::in);
+  if(f.fail())
+  {
+    cout<<"Mở file bị lỗi";
+    return -1;
+  }
+  f>>n;
+  f.getline(temp,10);
+  for(int i=0;i<n;i++)
+  {
+    //Đọc từ file ra mảng
+    f.getline(Cauhoi[i].Hoi,255);
+    f.getline(Cauhoi[i].A,50);
+    f.getline(Cauhoi[i].B,50);
+    f.getline(Cauhoi[i].C,50);
+    f.getline(Cauhoi[i].D,50);
+    f.getline(Cauhoi[i].Dapan,3);
+    f>>Cauhoi[i].Thuong;
+    f.getline(temp,10);
+    //In ra màn hình
+    cout<<Cauhoi[i].Hoi<<endl;
+    cout<<Cauhoi[i].A<<endl;
+    cout<<Cauhoi[i].B<<endl;
+    cout<<Cauhoi[i].C<<endl;
+    cout<<Cauhoi[i].D<<endl;
+    cout<<"Theo bạn phương án trả lời là:";
+    cin.getline(Traloi,3);
+    //strcmp(s1,s2) - Hàm so sánh 2 xâu s1,s2 nằm trong thư viên cstring
+    if(strcmp(Cauhoi[i].Dapan,Traloi)==0)
     {
-        for(int i=0;i<N;i++)
-        {
-            char dapantraloi[MAX][10];
-            cout<<"Cau "<<i+1<<":"<<cauhoi[i]<<endl;
-            cout<<"A. "<<dapanA[i]<<endl;
-            cout<<"B. "<<dapanB[i]<<endl;
-            cout<<"C. "<<dapanC[i]<<endl;
-            cout<<"D. "<<dapanD[i]<<endl;
-            cout<<"Bạn có 5s suy nghĩ"<<endl;
-            sleep(2);
-            cout<<"Đáp án của bạn là: ";
-            cin.ignore();
-            cin.getline(dapantraloi[i],10);
-            if(strcmp(dapantraloi[i],dapandung[i])==0)
-            {
-                cout<<"Chúc mừng bạn đã trả lời đúng"<<endl;
-                diem+=1;
-            }
-            else
-            {
-                cout<<"Bạn đã trả lời sai"<<endl;
-                cout<<"Chúc bạn may mắn"<<endl;
-                break;
-            }
-        }
+      cout<<"Chúc mừng bạn đã trả lời đúng! Câu trả lời có số điểm là"<<Cauhoi[i].Thuong<<endl;
     }
-    cout<<"Bạn có số điểm là:"<<diem<<endl;
-    ofstream fout("Thống kê người chơi.txt");
-    fout<<"ten: "<<ten<<endl<<"điểm: "<<diem<<endl;
-    return 0;
+    else
+    {
+      cout<<"Chúc bạn may mắn lần sau! Dừng cuộc chơi!"<<endl;
+      break;
+    }
+  }
+  f.close();
+  return 0;
 }
-//a36341 nguyen quang vinh 
